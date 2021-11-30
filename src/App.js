@@ -26,7 +26,20 @@ class App extends React.Component {
     });
   }
 
-  handleToggle = () => {
+  handleToggle = (task) => {
+    this.setState({
+      ...this.state,
+      tasks: this.state.tasks.map( item =>{
+        if ( item.id = task.id){
+          return {...item, completed: !item.completed}
+        } else {
+          return item;
+        }
+      })
+    })
+    }
+
+  handleRemoveComplete = () => {
     this.setState({
       ...this.state,
       tasks: this.state.tasks.filter(item =>{  
@@ -35,22 +48,14 @@ class App extends React.Component {
     })
   }
 
-  handleRemoveComplete = (task) => {
-    e.preventDefault();
-    this.setState({
-      ...this.state,
-      tasks: this.state.tasks.map( item =>(
-         item.id === task.id ? {...item, completed: !item.completed} : item
-         ))
-    })
-  }
-
+  
   render() {
     return (
       <div>
         <h1>Task List</h1>
-        <TodoForm  tasks={this.state.tasks.task}  handleSubmit={this.handleSubmit} remove={this.handleRemoveComplete}/>
+        <TodoForm  tasks={this.state.tasks.task}  handleSubmit={this.handleSubmit}/>
         <TodoList task={this.state.tasks} toggle={this.handleToggle}/>
+        <button onClick={this.handleRemoveComplete}>Remove completed</button>
       </div>
     );
   }

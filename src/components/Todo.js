@@ -2,8 +2,9 @@ import React from "react";
 
 
 class Todo extends React.Component {
+
     handleClick = () => {
-        this.props.handleRemoveComplete(props.task);
+        props.toggle(props.task);
     }
     
     render(){

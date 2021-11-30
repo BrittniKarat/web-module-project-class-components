@@ -9,17 +9,16 @@ class TodoForm extends React.Component {
   }
 
       handleChange = (e) => {
-          this.setState({
-              ...this.state,
-              task: e.target.value
-          })
+        this.setState({
+            ...this.state,
+            task: e.target.value
+        })
       }
   
       handleClick = (e) => {
-          e.preventDefault();
-          this.props.handleSubmit(this.state.task);
+        e.preventDefault();
+        this.props.handleSubmit(this.state.task);
       }
-  
 
   render() {
     return (
@@ -30,7 +29,7 @@ class TodoForm extends React.Component {
           placeholder="New Task"
         />
         <button onClick={this.handleClick}> Add Task </button>
-        <button onClick={this.props.remove}>Remove completed</button>
+
       </form>
     );
   }
